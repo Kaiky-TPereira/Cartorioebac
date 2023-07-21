@@ -64,11 +64,11 @@ int consulta()
 	char cpf[40];
 	char conteudo[200];
 	
-	printf("Digite o CPF a ser consultado: ");
+	printf("Digite o CPF a ser consultado: "); //Recebendo o usuário
 	scanf("%s",cpf);
 	
 	FILE *file;
-	file = fopen(cpf, "r");
+	file = fopen(cpf, "r"); //'r' significa ler
 	
 	if(file== NULL) //"NULL" significa se não tiver nada
 	{
@@ -111,50 +111,65 @@ int main()
 	{
 	int opcao=0; //Definindo variáveis 
 	int laco=1;
+	char senhadigitada[]="a";
+	int comparacao;
 	
-	for(laco=1;laco=1;)
+	printf("### Cartorio da EBAC ###\n\n"); //início do menu
+	printf("Login de administrador!\n\nDigite sua senha: ");
+	scanf("%s",senhadigitada);
+	
+	comparacao = strcmp(senhadigitada, "admin");
+	
+	if(comparacao == 0)
 	{
-		
-		system("cls"); //limpar a tela
-		
-		setlocale(LC_ALL, "Portuguese"); //Definindo linguagem
-	
-		printf("### Cartório da EBAC ###\n\n"); //início do menu
-		printf(" Escolha a opção desejada do menu: \n\n");
-		printf("\t1 - Registrar nomes\n");
-		printf("\t2 - Consultar nomes\n");
-		printf("\t3 - Deletar nomes\n");
-		printf("\t4 - Sair do sistema\n\n");
-		printf("Opção: "); //fim do menu
-	
-		scanf("%d", &opcao); //armazenando a escolha do usuário
 	
 		system("cls");
+		for(laco=1;laco=1;)
+		{	
+			setlocale(LC_ALL, "Portuguese"); //Definindo linguagem
 	
-		switch(opcao) //início da seleção
-		{
-			case 1:
-			registro(); //chamada de funções
-			break;
+			printf(" Escolha a opção desejada do menu: \n\n");
+			printf("\t1 - Registrar nomes\n");
+			printf("\t2 - Consultar nomes\n");
+			printf("\t3 - Deletar nomes\n");
+			printf("\t4 - Sair do sistema\n\n");
+			printf("Opção: "); //fim do menu
+	
+			scanf("%d", &opcao); //armazenando a escolha do usuário
+	
+			system("cls");
 		
-			case 2:
-			consulta();
-			break;
+			switch(opcao) //início da seleção
+			{
+				case 1:
+				registro(); //chamada de funções
+				break;
+		
+				case 2:
+				consulta();
+				break;
 			
-			case 3:
-			deletar();
-			break;
+				case 3:
+				deletar();
+				break;
+				
+				case 4:
+				printf("Obrigado por acessar o sistema!\n");
+				return 0;
+				break;
 			
-			case 4:
-			printf("Obrigado por acessar o sistema!\n");
-			return 0;
-			break;
-			
-			default://se o usuário não escolher certo
-			printf("Essa opção não está disponivel!\n");
-			system("pause");
-			break;
+				default://se o usuário não escolher certo
+				printf("Essa opção não está disponivel!\n");
+				system("pause");
+				break;
+				
+				}
+			}
+		
+		
 		}
-	}
-	
+
+		else
+			printf("Senha incorreta!");
+
 	}
